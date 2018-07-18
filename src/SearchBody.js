@@ -21,12 +21,25 @@ class SearchBody extends React.Component {
                     <ListItem itemDivider>
                         <Text style={{fontWeight: 'bold'}}>Size</Text>
                     </ListItem>
-                    <ListItem itemDivider>
+                    <ListItem >
                         <Text >Weight - {pokeData.weight} kg</Text>
                     </ListItem>
-                    <ListItem itemDivider>
-                        <Text >Height - {pokeData.height} in</Text>
+                    <ListItem >
+                        <Text >Height - {pokeData.height / 10} m</Text>
                     </ListItem>
+                    <ListItem itemDivider>
+                        <Text style={{fontWeight: 'bold'}}>Abilities</Text>
+                    </ListItem>
+                    <List
+                        dataArray={pokeData.abilities}
+                        renderRow={item => (
+                            <ListItem>
+                                <Text >{item.ability.name}</Text>
+                            </ListItem>
+                        )}
+                        >
+
+                    </List>
                 </View>
             </ScrollView>
         )
