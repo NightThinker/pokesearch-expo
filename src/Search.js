@@ -10,7 +10,8 @@ class Search extends React.Component {
 
     state = {
         pokeSearch: '',
-        onCall: true
+        onCall: true,
+        data: {}
     }
 
     searchPoke = () => {
@@ -19,6 +20,8 @@ class Search extends React.Component {
         axios.get('http://pokeapi.salestock.net/api/v2/pokemon/' + this.state.pokeSearch)
         .then(res => {
             console.log('res : ',res.data);
+            this.setState({data: res.data})
+            this.setState({onCall: false})
         }).catch(err => {
             console.log('err : ',err);
         })
@@ -31,7 +34,7 @@ class Search extends React.Component {
             )
         } else {
             return (
-               <SearchBody /> 
+               <SearchBody data={this.state.data} /> 
             )
         }
     }
